@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Basic site</title>
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-<body>
-  <h1>Basic site</h1>
-  <p><a href="/phpinfo.php">phpinfo</a></p>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </p>
-</body>
-</html>
+<?php
+
+require_once '../vendor/autoload.php';
+
+$app = new \Slim\Slim();
+
+$app->get('/', function() use ($app) {
+  $app->render('default.php', array('name'=>'World'));
+});
+
+$app->get('/:name', function ($name) use ($app) {
+  $app->render('default.php', array('name'=>$name));
+});
+
+$app->run();
