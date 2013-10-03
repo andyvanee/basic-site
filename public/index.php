@@ -1,15 +1,9 @@
-<?php
-
-require_once '../vendor/autoload.php';
-
-$app = new \Slim\Slim();
-
-$app->get('/', function() use ($app) {
-  $app->render('default.php', array('name'=>'World'));
-});
-
-$app->get('/:name', function ($name) use ($app) {
-  $app->render('default.php', array('name'=>$name));
-});
-
-$app->run();
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Page</title>
+</head>
+<body>
+  <pre><?php print_r($_SERVER) ?></pre>
+</body>
+</html>

@@ -1,10 +1,8 @@
 FROM andyvanee/nginx
 
 # Build the site.
-ADD . /var/www
-RUN cd /var/www && bin/composer install
-RUN cat /var/www/nginx.conf > /etc/nginx/sites-available/default
-
+ADD . /app
 EXPOSE 80
+RUN /app/provision.sh
 
 CMD service php5-fpm start && nginx
